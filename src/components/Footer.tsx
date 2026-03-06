@@ -49,8 +49,7 @@ export default function Footer() {
             <h4 className="mb-4 text-[11px] font-semibold uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.25)" }}>
               Contact
             </h4>
-            <p className="mb-2 text-[13px]" style={{ color: "rgba(255,255,255,0.45)" }}>contact@shubhzsecure.com</p>
-            <p className="text-[13px]" style={{ color: "rgba(255,255,255,0.45)" }}>+1 (800) 555-4567</p>
+            <p className="text-[13px]" style={{ color: "rgba(255,255,255,0.45)" }}>info@shubhztechwork.com</p>
           </motion.div>
 
           {/* Quick Links */}
