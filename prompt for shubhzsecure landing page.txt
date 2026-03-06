@@ -1,0 +1,181 @@
+You are a senior frontend engineer and motion UI designer.
+
+I want you to recreate the attached reference website layout EXACTLY (same section structure, same visual hierarchy, same spacing rhythm, same card placements, same overall composition, same dark/light contrast blocks, same typography scale, and same color palette), but rebrand the content into a cybersecurity services website for:
+
+Brand: ShubhzSecure
+Tagline: “Simplifying Tech, Amplifying Growth”
+
+IMPORTANT DESIGN CONSTRAINT (STRICT)
+- The website must follow the reference image layout as closely as possible.
+- Keep ALL sections in the same order and with similar proportions/heights.
+- Keep the same visual flow:
+  - light hero area
+  - dark about/services blocks
+  - feature article layout
+  - testimonials layout
+  - large CTA banner
+  - dense footer
+- Keep the same color palette feeling (monochrome black/white/gray with subtle premium highlights).
+- Keep the same premium futuristic aesthetic.
+- DO NOT redesign from scratch.
+- DO NOT change to a generic SaaS landing page layout.
+- This is a visual adaptation / re-skin of the reference into cybersecurity branding.
+
+TECH STACK (MANDATORY)
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- Framer Motion (for entrance animations, hover interactions, subtle parallax)
+- next/image
+- Responsive design (desktop, tablet, mobile)
+
+ANIMATION REQUIREMENTS (Framer Motion)
+Use smooth premium animations, not flashy/gaming:
+- Hero text fade-up + stagger
+- Hero image reveal (scale + fade)
+- Metrics chips slide-in
+- Section headings fade-up on scroll
+- Service cards stagger reveal on viewport enter
+- Service cards hover: slight y-lift + border glow + scale 1.01
+- Featured image subtle parallax on scroll
+- Testimonials cards stagger from right
+- CTA banner fade-up with subtle background zoom
+- Navbar appearance transition on scroll (slight background blur)
+- Use whileInView + viewport once:true where appropriate
+- Respect reduced-motion accessibility (prefers-reduced-motion)
+
+VISUAL STYLE (MATCH REFERENCE COLORS)
+Color palette should remain nearly identical to the reference:
+- Light hero background: soft off-white / very light gray
+- Dark sections: deep black / charcoal
+- Text:
+  - dark text on hero
+  - white/off-white text on dark sections
+- Borders/cards: low-contrast gray, glassy subtle outlines
+- Buttons: monochrome primary/secondary matching reference
+- Minimal accent usage only (optional very subtle cybersecurity cyan glow on hover, but keep base palette same as reference)
+
+TYPOGRAPHY & SPACING (MATCH REFERENCE FEEL)
+- Large uppercase geometric/grotesk headings like reference
+- Thin-to-regular font weights with premium spacing
+- Wide breathing room, elegant margins
+- Similar line breaks in large headings
+- Preserve the editorial luxury feel
+
+WEBSITE CONTENT MAPPING (REPLACE VR CONTENT WITH SHUBHZSECURE CONTENT, KEEP LAYOUT SAME)
+
+1) NAVBAR (same structure as reference)
+- Logo: ShubhzSecure
+- Links: Home, About, Services, Case Studies, Contact
+- Search bar UI on the right (same style as reference)
+- Keep minimal top nav aesthetic
+
+2) HERO SECTION (same composition as reference)
+- Left large heading:
+  “NEW DIGITAL
+   SECURITY
+   FRONTIER”
+  OR
+  “SECURE YOUR
+   DIGITAL
+   UNIVERSE”
+- Small top label (like “FUTURISTIC” in reference) -> use “CYBERSECURITY”
+- Primary CTA: Get Started
+- Secondary CTA: Contact Us
+- Right-side hero image/visual:
+  Replace VR headset character with a premium cybersecurity-themed image (human + futuristic visor/HUD, privacy-tech feel), but preserve same placement and scale as reference.
+- Metric text near visual (same style placement):
+  e.g. “47.2%” + label “Risk Visibility”
+- Supporting microcopy and mini trust avatars/stat row (same layout style)
+
+3) ABOUT SECTION (same layout as reference “THE DIGITAL FRONTIER”)
+- Heading: “THE PRIVACY FRONTIER”
+- Pills/chips: Privacy / Security / Compliance
+- Paragraph: concise ShubhzSecure value proposition
+- Buttons: Learn More / Watch Video
+- Left-side image area should match same size/position style (cyber helmet/abstract security portrait visual)
+
+4) SERVICES SECTION (same heading and 3-card layout as reference)
+- Heading: “OUR SERVICE”
+- Three service cards (same card proportions and spacing):
+  - Privacy Threat Modeling
+  - Compliance Automation
+  - Cloud Security Hardening
+- Each card includes icon, short copy, Learn More
+- Keep arrows/slider controls visual if present in reference (can be decorative/static)
+
+5) FEATURED INSIGHT SECTION (same “LIMITLESS POSSIBILITIES...” style layout)
+- Heading rewritten for ShubhzSecure but preserve visual structure:
+  “LIMITLESS PROTECTION
+   WITH SHUBHZSECURE”
+- Left vertical category list
+- Center large image card
+- Right article/insight snippet:
+  “How Privacy Engineering is Transforming Digital Trust”
+  Date + author text in same positions
+
+6) TESTIMONIAL SECTION (same layout as reference “VOICES OF THE FUTURE”)
+- Heading: “VOICES OF TRUST”
+- Left descriptive paragraph
+- Right stacked testimonial cards with avatar circles and names/roles
+- Content should target DPO / Security Architect / CTO personas
+
+7) LARGE CTA BANNER (same composition as reference)
+- Full-width rounded image banner with dark overlay
+- Headline:
+  “DIVE INTO
+   ZERO-TRUST
+   READINESS”
+- Play icon/button optional (same placement style)
+- Small supporting copy on right side
+- Keep exact visual rhythm
+
+8) FOOTER (same density/layout feel as reference)
+- Logo + columns for Email, Phone Number, Quick Links, Explore
+- Brand description:
+  “ShubhzSecure builds privacy-first security systems for modern teams.”
+- Social icons row
+- Bottom mini logo strip row (decorative placeholders)
+
+IMAGE / ASSET DIRECTION
+- Use placeholder images with the SAME CROPPING STYLE and COMPOSITION as reference.
+- Prioritize black-and-white / low-saturation futuristic portraits.
+- Do not use colorful hacker clichés (no green matrix screens).
+- Use premium editorial cyber visuals.
+
+CODE REQUIREMENTS
+- Build this as reusable components:
+  components/
+    Navbar.tsx
+    Hero.tsx
+    AboutSection.tsx
+    ServicesSection.tsx
+    InsightSection.tsx
+    TestimonialsSection.tsx
+    CTASection.tsx
+    Footer.tsx
+    MotionWrapper.tsx (optional reusable motion presets)
+- Create data files for services/testimonials/article
+- Use clean semantic HTML and Tailwind utility classes
+- Ensure responsive behavior mirrors desktop layout first, then stacks gracefully on mobile
+
+FRAMER MOTION IMPLEMENTATION DETAILS
+- Define reusable variants:
+  fadeUp, staggerContainer, staggerItem, slideInLeft, slideInRight, scaleIn
+- Apply viewport triggers with once:true
+- Add hover motion to cards and buttons
+- Keep transitions smooth and premium:
+  duration ~0.5–0.9s, ease [0.22, 1, 0.36, 1]
+- No excessive bouncing
+
+OUTPUT FORMAT
+Provide complete production-ready code for:
+- app/layout.tsx
+- app/page.tsx
+- components/*
+- lib/motion.ts (variants)
+- data/content.ts
+- any required Tailwind/global styling notes
+
+FINAL NOTE (DO NOT IGNORE)
+This is not “inspired by” — it must be a close visual recreation of the provided layout and color system, with content replaced for ShubhzSecure and Framer Motion enhancements added.
