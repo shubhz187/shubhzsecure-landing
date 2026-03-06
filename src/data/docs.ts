@@ -25,8 +25,8 @@ export const docSections: DocSection[] = [
 
 | Capability | Description |
 |------------|-------------|
-| Privacy Threat Modeling | LINDDUN, STRIDE, MITRE PANOPTIC frameworks with AI-generated analysis |
-| Privacy Scoring | Quantitative risk scoring using NIST PRAM + FAIR-Privacy |
+| Privacy Threat Modeling | Privacy Threat, STRIDE, Threat Assessment frameworks with AI-generated analysis |
+| Privacy Scoring | Quantitative risk scoring using Risk Scoring + Privacy Risk |
 | Architecture Diagrams | AI-generated PlantUML diagrams from natural language |
 | Compliance Tracking | GDPR, CCPA, SOC 2, ISO 27001, HIPAA, PCI-DSS readiness |
 | PII/SPI Discovery | ML-powered scanning of databases, cloud storage, and file systems |
@@ -125,7 +125,7 @@ cd priaitect-frontend && npm run dev                    # Frontend
 - **Real-Time Statistics** — Live-updating metrics
 
 **Scoring Methodology:**
-- Privacy scores use **NIST PRAM** (Privacy Risk Assessment Methodology) combined with **FAIR-Privacy** (Factor Analysis of Information Risk)
+- Privacy scores use **Risk Scoring** (Privacy Risk Assessment Methodology) combined with **Privacy Risk** (Factor Analysis of Information Risk)
 - Grades: A (90\u2013100), B (80\u201389), C (70\u201379), D (60\u201369), F (below 60)
 - Risk levels: Critical, High, Medium, Low based on threat severity and likelihood`,
   },
@@ -145,7 +145,7 @@ cd priaitect-frontend && npm run dev                    # Frontend
 
 **What You Get:**
 - **Threat List** \u2014 Each threat identified with severity (Critical/High/Medium/Low), likelihood, and category
-- **LINDDUN Classification** \u2014 Threats mapped to privacy categories:
+- **Privacy Threat Classification** \u2014 Threats mapped to privacy categories:
   - **L**inking \u2014 Associating data across sources
   - **I**dentifying \u2014 Connecting data to individuals
   - **N**on-repudiation \u2014 Inability to deny actions
@@ -299,7 +299,7 @@ The scanner uses an ML ensemble classifier combining:
 - Interactive graph visualization (ReactFlow) showing potential data breach paths
 - Critical node identification (bottleneck assets appearing in multiple attack paths)
 - Risk scoring per path with exploitability, impact, and likelihood factors
-- LINDDUN threat mapping for each path
+- Privacy Threat threat mapping for each path
 
 **Exports:**
 - CSV, JSON, and PDF export for scans, findings, and dashboards
@@ -335,8 +335,8 @@ The scanner uses an ML ensemble classifier combining:
 
 **Scan Results:**
 - **Module-by-Module Results** \u2014 See findings per scan module (storage, IAM, logging)
-- **Compliance Mapping** \u2014 Findings mapped to ISO 27001, SOC 2, GDPR, HIPAA, PCI-DSS, NIST controls
-- **LINDDUN Threat Analysis** \u2014 Privacy threat categorization of findings
+- **Compliance Mapping** \u2014 Findings mapped to ISO 27001, SOC 2, GDPR, HIPAA, PCI-DSS, regulatory controls
+- **Privacy Threat Threat Analysis** \u2014 Privacy threat categorization of findings
 - **Topology Visualization** \u2014 Interactive cloud resource topology graph
 - **Evidence Package** \u2014 Exportable evidence for compliance audits (JSON, CSV, or ZIP)
 
@@ -647,7 +647,7 @@ Delete an analysis. **Auth:** Required (owner, org admin, or system admin)
 
 #### \`POST /api/analyze\`
 
-Structured privacy threat analysis using LINDDUN + STRIDE. Optionally accepts a base64 image.
+Structured privacy threat analysis using Privacy Threat + STRIDE. Optionally accepts a base64 image.
 
 \`\`\`json
 // Request
@@ -660,7 +660,7 @@ Structured privacy threat analysis using LINDDUN + STRIDE. Optionally accepts a 
 // Response
 {
   "analysis_id": "...",
-  "threats": [{ "id": "T1", "severity": "High", "likelihood": "Medium", "linddun": "Disclosure" }],
+  "threats": [{ "id": "T1", "severity": "High", "likelihood": "Medium", "category": "Disclosure" }],
   "privacy_score": 72.5,
   "grade": "C",
   "risk_level": "Medium"
@@ -673,7 +673,7 @@ Generate a remediated architecture diagram with privacy controls injected.
 
 #### \`POST /api/score\`
 
-Calculate privacy scores from a list of threats. Uses NIST PRAM + FAIR-Privacy methodology.`,
+Calculate privacy scores from a list of threats. Uses Risk Scoring + Privacy Risk methodology.`,
   },
   {
     id: "api-diagrams",
@@ -942,7 +942,7 @@ Generate a compliance badge certificate (requires 30%+ score). Returns PDF binar
 | \`GET\` | \`/api/scanner/cloud/scans/{id}/findings\` | Get findings |
 | \`GET\` | \`/api/scanner/cloud/scans/{id}/compliance\` | Compliance results |
 | \`GET\` | \`/api/scanner/cloud/scans/{id}/topology\` | Resource topology |
-| \`GET\` | \`/api/scanner/cloud/scans/{id}/threats\` | LINDDUN threats |
+| \`GET\` | \`/api/scanner/cloud/scans/{id}/threats\` | Privacy Threat threats |
 | \`GET\` | \`/api/scanner/cloud/scans/{id}/evidence\` | Export evidence |`,
   },
   {
@@ -1114,7 +1114,7 @@ The key is only shown once at creation. Use it via the \`X-API-Key\` header.
 
 \`\`\`
 User Input \u2192 FastAPI \u2192 AI Provider (Gemini/DeepSeek)
-    \u2192 Parse & Score (NIST PRAM + FAIR-Privacy)
+    \u2192 Parse & Score (Risk Scoring + Privacy Risk)
     \u2192 Store (PostgreSQL + Cloud Storage)
     \u2192 Return to React Frontend
 \`\`\`

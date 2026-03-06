@@ -13,7 +13,7 @@ export const services = [
     icon: "dashboard",
     title: "Privacy Threat Dashboard",
     description:
-      "Real-time privacy risk visualization with LINDDUN and MITRE PANOPTIC frameworks. Interactive threat maps, risk scores, and AI-generated remediation across your entire architecture.",
+      "Real-time privacy risk visualization with advanced threat modeling frameworks. Interactive threat maps, risk scores, and AI-generated remediation across your entire architecture.",
     href: "#",
   },
   {
@@ -43,7 +43,7 @@ export const productFeatures = [
   },
   {
     label: "Privacy Scoring",
-    description: "NIST PRAM + FAIR-Privacy quantitative risk assessment",
+    description: "Quantitative privacy risk scoring and assessment",
   },
   {
     label: "Cloud Connectors",
@@ -63,7 +63,7 @@ export const insightTabFeatures: Record<string, { label: string; description: st
   Dashboard: [
     { label: "Architecture Diagrams", description: "Auto-generate DFD and architecture diagrams with Mermaid" },
     { label: "Multi-Provider AI", description: "Groq, DeepSeek, Claude, and Gemini working in concert" },
-    { label: "Privacy Scoring", description: "NIST PRAM + FAIR-Privacy quantitative risk assessment" },
+    { label: "Privacy Scoring", description: "Quantitative privacy risk scoring and assessment" },
     { label: "Cloud Connectors", description: "22+ connectors for AWS, Azure, GCP, and on-premise systems" },
   ],
   Scanner: [
@@ -83,7 +83,7 @@ export const insightTabFeatures: Record<string, { label: string; description: st
 export const testimonials = [
   {
     quote:
-      "ShubhzSecure's dashboard gave us instant visibility into privacy risks we didn't even know existed. The LINDDUN mapping alone saved our compliance team months of work.",
+      "ShubhzSecure's dashboard gave us instant visibility into privacy risks we didn't even know existed. The threat mapping alone saved our compliance team months of work.",
     name: "James Rizaki",
     role: "Chief Privacy Officer, MedTech Corp",
     avatar: "JR",
@@ -108,7 +108,7 @@ export const insightArticle = {
   categories: ["Dashboard", "Scanner", "Compliance"],
   title: "How AI-Driven Privacy Engineering is Redefining Threat Analysis",
   description:
-    "From automated LINDDUN threat trees to ML-powered PII classification — discover how ShubhzSecure's multi-provider AI pipeline turns complex privacy assessments into actionable intelligence in minutes, not months.",
+    "From automated threat trees to ML-powered PII classification — discover how ShubhzSecure's multi-provider AI pipeline turns complex privacy assessments into actionable intelligence in minutes, not months.",
   date: "08 February 2026",
   author: "ShubhzSecure Team",
 };

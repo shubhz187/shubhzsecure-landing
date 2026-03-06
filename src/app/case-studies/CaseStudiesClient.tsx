@@ -87,7 +87,7 @@ const caseStudies = [
     challenge:
       "Security visibility was fragmented across three cloud providers. Each had different tools, different dashboards, and different compliance evidence formats — creating dangerous blind spots.",
     solution:
-      "ShubhzSecure's multi-cloud scanner unified all three environments into a single privacy topology view with LINDDUN threat mapping and automated compliance evidence collection.",
+      "ShubhzSecure's multi-cloud scanner unified all three environments into a single privacy topology view with privacy threat mapping and automated compliance evidence collection.",
     stats: [
       { value: 3, suffix: "", label: "Cloud Providers" },
       { value: 200, suffix: "+", label: "Resources Scanned" },
@@ -98,7 +98,7 @@ const caseStudies = [
       "Azure Blob & AD Analysis",
       "GCS & Cloud Audit Logs",
       "Unified Topology View",
-      "LINDDUN Threat Mapping",
+      "Privacy Threat Mapping",
       "SOC 2 & GDPR Evidence",
     ],
     accent: "#8b5cf6",

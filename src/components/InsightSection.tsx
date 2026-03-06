@@ -94,7 +94,7 @@ function DashboardMockup() {
 
       {/* Threat panel */}
       <rect x="16" y="285" width="408" height="82" rx="10" fill="rgba(239,68,68,0.04)" stroke="rgba(239,68,68,0.12)" strokeWidth="1" />
-      <text x="30" y="306" fill="#ef4444" fontSize="9" fontWeight="700" fontFamily="system-ui" letterSpacing="0.05em">⚠ LINDDUN THREATS DETECTED</text>
+      <text x="30" y="306" fill="#ef4444" fontSize="9" fontWeight="700" fontFamily="system-ui" letterSpacing="0.05em">⚠ PRIVACY THREATS DETECTED</text>
       {[
         { label: "Linkability", level: "High", c: "#ef4444", w: 150, fill: 105 },
         { label: "Identifiability", level: "Medium", c: "#f59e0b", w: 110, fill: 77 },

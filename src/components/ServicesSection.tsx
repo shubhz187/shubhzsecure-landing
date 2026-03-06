@@ -39,7 +39,7 @@ const accentColors: Record<string, string> = {
 };
 
 const tags: Record<string, string[]> = {
-  dashboard: ["LINDDUN", "MITRE", "Real-time"],
+  dashboard: ["Threat Modeling", "Risk Scoring", "Real-time"],
   scanner: ["ML-Powered", "22+ Sources", "PII/SPI"],
   compliance: ["GDPR", "CCPA", "HIPAA"],
 };

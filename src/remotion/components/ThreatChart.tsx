@@ -45,7 +45,7 @@ export function ThreatChart() {
           marginBottom: 4,
         }}
       >
-        LINDDUN Threat Analysis
+        Privacy Threat Analysis
       </div>
       <div
         style={{

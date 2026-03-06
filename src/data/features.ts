@@ -16,14 +16,14 @@ export const featureCategories: FeatureCategory[] = [
     title: "Threat Modeling",
     headline: "Identify threats\nbefore they find you.",
     description:
-      "Systematic identification and scoring of privacy threats using LINDDUN, STRIDE, MITRE PANOPTIC, and FAIR-Privacy frameworks — with AI-generated remediation strategies.",
+      "Systematic identification and scoring of privacy threats using industry-standard frameworks — with AI-generated remediation strategies.",
     icon: "threat",
     accent: "#06b6d4",
     capabilities: [
-      "LINDDUN Privacy Threat Framework",
-      "MITRE PANOPTIC Assessment",
-      "STRIDE Security Analysis",
-      "Privacy Scoring (FAIR/NIST PRAM)",
+      "Privacy Threat Classification",
+      "Automated Risk Assessment",
+      "Security Threat Analysis",
+      "Quantitative Privacy Scoring",
       "AI Remediation Guidance",
       "Attack Path Visualization",
     ],
@@ -88,7 +88,7 @@ export const featureCategories: FeatureCategory[] = [
     title: "Cloud Scanning",
     headline: "AWS. Azure. GCP.\nAll scanned.",
     description:
-      "Multi-cloud scanning with compliance mapping, topology visualization, and LINDDUN threat mapping across all your cloud environments.",
+      "Multi-cloud scanning with compliance mapping, topology visualization, and privacy threat mapping across all your cloud environments.",
     icon: "cloud",
     accent: "#3b82f6",
     capabilities: [

@@ -35,10 +35,10 @@ const stats = [
 ];
 
 const pillars = [
-  { label: "LINDDUN Framework", color: "#06b6d4" },
-  { label: "NIST PRAM", color: "#8b5cf6" },
-  { label: "FAIR-Privacy", color: "#10b981" },
-  { label: "MITRE PANOPTIC", color: "#f59e0b" },
+  { label: "Threat Modeling", color: "#06b6d4" },
+  { label: "Risk Scoring", color: "#8b5cf6" },
+  { label: "PII Detection", color: "#10b981" },
+  { label: "Compliance Automation", color: "#f59e0b" },
 ];
 
 export default function AboutSection() {

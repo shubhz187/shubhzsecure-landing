@@ -132,7 +132,7 @@ export function DashboardVideo() {
               minHeight: 0,
             }}
           >
-            {/* LINDDUN Threat Chart */}
+            {/* Privacy Threat Chart */}
             <ThreatChart />
 
             {/* Right Column: Compliance + Scanner */}
