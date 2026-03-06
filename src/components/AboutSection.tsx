@@ -127,7 +127,7 @@ export default function AboutSection() {
 
         {/* Bottom CTA link */}
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-12 flex justify-center">
-          <a href="#services" className="inline-flex items-center gap-2 text-[15px] font-medium transition-opacity hover:opacity-70" style={{ color: "#06b6d4" }}>
+          <a href="/features" className="inline-flex items-center gap-2 text-[15px] font-medium transition-opacity hover:opacity-70" style={{ color: "#06b6d4" }}>
             Explore the platform
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <polyline points="9,18 15,12 9,6" />
