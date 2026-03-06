@@ -1,188 +1,323 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { flipIn, staggerContainer, staggerItem, fadeUp, chipSlideIn, slideInLeft, slideInRight, wordStagger, wordRevealItem, scaleIn } from "@/lib/motion";
-import { insightArticle, productFeatures } from "@/data/content";
-import { useParallax } from "@/lib/useAnimations";
+import { useRef, useState } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import {
+  staggerContainer,
+  staggerItem,
+  fadeUp,
+  chipSlideIn,
+  wordStagger,
+  wordRevealItem,
+  scaleIn,
+} from "@/lib/motion";
+import { insightArticle, insightTabFeatures } from "@/data/content";
 import TiltCard from "@/components/TiltCard";
 
-/* ── Architecture Diagram Mockup (kept, restyled frame) ───── */
-function DiagramMockup() {
+const featureAccents = ["#06b6d4", "#8b5cf6", "#10b981", "#f59e0b"];
+
+/* ── Dark Architecture Diagram ─────────────────────────── */
+function DarkDiagramMockup() {
   return (
-    <svg viewBox="0 0 440 360" className="h-full w-full" fill="none">
-      <rect width="440" height="360" rx="12" fill="#ffffff" />
-      {/* Window bar */}
-      <rect width="440" height="28" rx="12" fill="#f5f5f7" />
-      <rect y="16" width="440" height="12" fill="#f5f5f7" />
-      <circle cx="16" cy="14" r="4" fill="#ff5f57" />
-      <circle cx="30" cy="14" r="4" fill="#febc2e" />
-      <circle cx="44" cy="14" r="4" fill="#28c840" />
-      <text x="220" y="17" fill="#a1a1a6" fontSize="7" textAnchor="middle" fontFamily="system-ui">ShubhzSecure — Architecture (Auto-Generated)</text>
-
-      {/* DFD Nodes */}
-      <rect x="16" y="60" width="90" height="44" rx="8" fill="#f5f5f7" stroke="#06b6d4" strokeWidth="1" />
-      <text x="61" y="78" fill="#06b6d4" fontSize="7" textAnchor="middle" fontWeight="600" fontFamily="system-ui">USERS</text>
-      <text x="61" y="92" fill="#a1a1a6" fontSize="6" textAnchor="middle" fontFamily="system-ui">External Entity</text>
-
-      <rect x="170" y="44" width="100" height="50" rx="8" fill="#f5f5f7" stroke="#8b5cf6" strokeWidth="1" />
-      <text x="220" y="66" fill="#8b5cf6" fontSize="7.5" textAnchor="middle" fontWeight="600" fontFamily="system-ui">WEB APP</text>
-      <text x="220" y="80" fill="#a1a1a6" fontSize="6" textAnchor="middle" fontFamily="system-ui">React Frontend</text>
-
-      <rect x="170" y="120" width="100" height="50" rx="8" fill="#f5f5f7" stroke="#f59e0b" strokeWidth="1" />
-      <text x="220" y="142" fill="#f59e0b" fontSize="7.5" textAnchor="middle" fontWeight="600" fontFamily="system-ui">API GATEWAY</text>
-      <text x="220" y="156" fill="#a1a1a6" fontSize="6" textAnchor="middle" fontFamily="system-ui">FastAPI + Auth</text>
-
-      <rect x="50" y="200" width="90" height="44" rx="8" fill="#f5f5f7" stroke="#10b981" strokeWidth="1" />
-      <text x="95" y="218" fill="#10b981" fontSize="7" textAnchor="middle" fontWeight="600" fontFamily="system-ui">DATABASE</text>
-      <text x="95" y="232" fill="#a1a1a6" fontSize="6" textAnchor="middle" fontFamily="system-ui">Supabase</text>
-
-      <rect x="180" y="200" width="100" height="44" rx="8" fill="#f5f5f7" stroke="#ef4444" strokeWidth="1" />
-      <text x="230" y="218" fill="#ef4444" fontSize="7" textAnchor="middle" fontWeight="600" fontFamily="system-ui">AI ENGINE</text>
-      <text x="230" y="232" fill="#a1a1a6" fontSize="6" textAnchor="middle" fontFamily="system-ui">Multi-Provider</text>
-
-      <rect x="320" y="120" width="100" height="50" rx="8" fill="#f5f5f7" stroke="#06b6d4" strokeWidth="1" />
-      <text x="370" y="142" fill="#06b6d4" fontSize="7.5" textAnchor="middle" fontWeight="600" fontFamily="system-ui">PII SCANNER</text>
-      <text x="370" y="156" fill="#a1a1a6" fontSize="6" textAnchor="middle" fontFamily="system-ui">ML Classifier</text>
-
-      <rect x="320" y="200" width="100" height="44" rx="8" fill="#f5f5f7" stroke="#8b5cf6" strokeWidth="1" />
-      <text x="370" y="218" fill="#8b5cf6" fontSize="7" textAnchor="middle" fontWeight="600" fontFamily="system-ui">CLOUD</text>
-      <text x="370" y="232" fill="#a1a1a6" fontSize="6" textAnchor="middle" fontFamily="system-ui">S3 / Azure / GCS</text>
-
-      {/* Arrows */}
-      <line x1="106" y1="82" x2="170" y2="69" stroke="#d1d1d6" strokeWidth="1" markerEnd="url(#arr2)" />
-      <line x1="220" y1="94" x2="220" y2="120" stroke="#d1d1d6" strokeWidth="1" markerEnd="url(#arr2)" />
-      <line x1="195" y1="170" x2="125" y2="200" stroke="#d1d1d6" strokeWidth="1" markerEnd="url(#arr2)" />
-      <line x1="230" y1="170" x2="230" y2="200" stroke="#d1d1d6" strokeWidth="1" markerEnd="url(#arr2)" />
-      <line x1="270" y1="145" x2="320" y2="145" stroke="#d1d1d6" strokeWidth="1" markerEnd="url(#arr2)" />
-      <line x1="370" y1="170" x2="370" y2="200" stroke="#d1d1d6" strokeWidth="1" markerEnd="url(#arr2)" />
+    <svg viewBox="0 0 440 380" className="h-full w-full" fill="none">
       <defs>
-        <marker id="arr2" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto">
-          <polygon points="0 0, 6 2, 0 4" fill="#d1d1d6" />
+        <marker id="arrD" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto">
+          <polygon points="0 0, 6 2, 0 4" fill="rgba(255,255,255,0.2)" />
         </marker>
+        <pattern id="dgrid" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" />
+        </pattern>
       </defs>
 
-      {/* Threat annotation */}
-      <rect x="16" y="270" width="408" height="78" rx="8" fill="#f5f5f7" />
-      <text x="28" y="290" fill="#ef4444" fontSize="7.5" fontWeight="600" fontFamily="system-ui">⚠ LINDDUN THREATS DETECTED</text>
+      <rect width="440" height="380" rx="16" fill="#0a0a14" />
+      <rect width="440" height="380" rx="16" fill="url(#dgrid)" />
+
+      {/* Window bar */}
+      <rect width="440" height="32" rx="16" fill="rgba(255,255,255,0.03)" />
+      <rect y="16" width="440" height="16" fill="rgba(255,255,255,0.03)" />
+      <circle cx="18" cy="16" r="4" fill="#ff5f57" opacity="0.8" />
+      <circle cx="34" cy="16" r="4" fill="#febc2e" opacity="0.8" />
+      <circle cx="50" cy="16" r="4" fill="#28c840" opacity="0.8" />
+      <text x="220" y="19" fill="rgba(255,255,255,0.3)" fontSize="7.5" textAnchor="middle" fontFamily="system-ui" fontWeight="500">
+        ShubhzSecure — Architecture (Auto-Generated)
+      </text>
+
+      {/* USERS */}
+      <rect x="16" y="68" width="95" height="48" rx="10" fill="rgba(6,182,212,0.06)" stroke="#06b6d4" strokeWidth="1" />
+      <text x="63" y="88" fill="#06b6d4" fontSize="7.5" textAnchor="middle" fontWeight="600" fontFamily="system-ui">USERS</text>
+      <text x="63" y="102" fill="rgba(255,255,255,0.35)" fontSize="6" textAnchor="middle" fontFamily="system-ui">External Entity</text>
+
+      {/* WEB APP */}
+      <rect x="170" y="50" width="105" height="54" rx="10" fill="rgba(139,92,246,0.06)" stroke="#8b5cf6" strokeWidth="1" />
+      <text x="222" y="74" fill="#8b5cf6" fontSize="8" textAnchor="middle" fontWeight="600" fontFamily="system-ui">WEB APP</text>
+      <text x="222" y="88" fill="rgba(255,255,255,0.35)" fontSize="6" textAnchor="middle" fontFamily="system-ui">React Frontend</text>
+
+      {/* API GATEWAY */}
+      <rect x="170" y="130" width="105" height="54" rx="10" fill="rgba(245,158,11,0.06)" stroke="#f59e0b" strokeWidth="1" />
+      <text x="222" y="154" fill="#f59e0b" fontSize="8" textAnchor="middle" fontWeight="600" fontFamily="system-ui">API GATEWAY</text>
+      <text x="222" y="168" fill="rgba(255,255,255,0.35)" fontSize="6" textAnchor="middle" fontFamily="system-ui">FastAPI + Auth</text>
+
+      {/* DATABASE */}
+      <rect x="50" y="215" width="95" height="48" rx="10" fill="rgba(16,185,129,0.06)" stroke="#10b981" strokeWidth="1" />
+      <text x="97" y="235" fill="#10b981" fontSize="7.5" textAnchor="middle" fontWeight="600" fontFamily="system-ui">DATABASE</text>
+      <text x="97" y="249" fill="rgba(255,255,255,0.35)" fontSize="6" textAnchor="middle" fontFamily="system-ui">Supabase</text>
+
+      {/* AI ENGINE */}
+      <rect x="180" y="215" width="105" height="48" rx="10" fill="rgba(239,68,68,0.06)" stroke="#ef4444" strokeWidth="1" />
+      <text x="232" y="235" fill="#ef4444" fontSize="7.5" textAnchor="middle" fontWeight="600" fontFamily="system-ui">AI ENGINE</text>
+      <text x="232" y="249" fill="rgba(255,255,255,0.35)" fontSize="6" textAnchor="middle" fontFamily="system-ui">Multi-Provider</text>
+
+      {/* PII SCANNER */}
+      <rect x="320" y="130" width="105" height="54" rx="10" fill="rgba(6,182,212,0.06)" stroke="#06b6d4" strokeWidth="1" />
+      <text x="372" y="154" fill="#06b6d4" fontSize="8" textAnchor="middle" fontWeight="600" fontFamily="system-ui">PII SCANNER</text>
+      <text x="372" y="168" fill="rgba(255,255,255,0.35)" fontSize="6" textAnchor="middle" fontFamily="system-ui">ML Classifier</text>
+
+      {/* CLOUD */}
+      <rect x="320" y="215" width="105" height="48" rx="10" fill="rgba(139,92,246,0.06)" stroke="#8b5cf6" strokeWidth="1" />
+      <text x="372" y="235" fill="#8b5cf6" fontSize="7.5" textAnchor="middle" fontWeight="600" fontFamily="system-ui">CLOUD</text>
+      <text x="372" y="249" fill="rgba(255,255,255,0.35)" fontSize="6" textAnchor="middle" fontFamily="system-ui">S3 / Azure / GCS</text>
+
+      {/* Dashed connections */}
+      <line x1="111" y1="92" x2="170" y2="77" stroke="rgba(255,255,255,0.12)" strokeWidth="1" strokeDasharray="4,3" markerEnd="url(#arrD)" />
+      <line x1="222" y1="104" x2="222" y2="130" stroke="rgba(255,255,255,0.12)" strokeWidth="1" strokeDasharray="4,3" markerEnd="url(#arrD)" />
+      <line x1="197" y1="184" x2="127" y2="215" stroke="rgba(255,255,255,0.12)" strokeWidth="1" strokeDasharray="4,3" markerEnd="url(#arrD)" />
+      <line x1="232" y1="184" x2="232" y2="215" stroke="rgba(255,255,255,0.12)" strokeWidth="1" strokeDasharray="4,3" markerEnd="url(#arrD)" />
+      <line x1="275" y1="157" x2="320" y2="157" stroke="rgba(255,255,255,0.12)" strokeWidth="1" strokeDasharray="4,3" markerEnd="url(#arrD)" />
+      <line x1="372" y1="184" x2="372" y2="215" stroke="rgba(255,255,255,0.12)" strokeWidth="1" strokeDasharray="4,3" markerEnd="url(#arrD)" />
+
+      {/* Threat panel */}
+      <rect x="16" y="285" width="408" height="82" rx="10" fill="rgba(239,68,68,0.04)" stroke="rgba(239,68,68,0.12)" strokeWidth="1" />
+      <text x="30" y="306" fill="#ef4444" fontSize="7.5" fontWeight="700" fontFamily="system-ui" letterSpacing="0.05em">⚠ LINDDUN THREATS DETECTED</text>
       {[
-        { label: "Linkability", level: "High", c: "#ef4444", w: 140 },
-        { label: "Identifiability", level: "Medium", c: "#f59e0b", w: 100 },
-        { label: "Non-repudiation", level: "Low", c: "#10b981", w: 60 },
+        { label: "Linkability", level: "High", c: "#ef4444", w: 150, fill: 105 },
+        { label: "Identifiability", level: "Medium", c: "#f59e0b", w: 110, fill: 77 },
+        { label: "Non-repudiation", level: "Low", c: "#10b981", w: 65, fill: 45 },
       ].map((t, i) => (
         <g key={i}>
-          <text x="28" y={308 + i * 16} fill="#6e6e73" fontSize="7" fontFamily="system-ui">{t.label}</text>
-          <rect x="130" y={301 + i * 16} width={t.w} height="6" rx="3" fill={t.c} opacity="0.35" />
-          <text x={136 + t.w} y={309 + i * 16} fill={t.c} fontSize="6.5" fontFamily="system-ui">{t.level}</text>
+          <text x="30" y={324 + i * 17} fill="rgba(255,255,255,0.4)" fontSize="7" fontFamily="system-ui">{t.label}</text>
+          <rect x="135" y={317 + i * 17} width={t.w} height="7" rx="3.5" fill="rgba(255,255,255,0.05)" />
+          <rect x="135" y={317 + i * 17} width={t.fill} height="7" rx="3.5" fill={t.c} opacity="0.6" />
+          <text x={142 + t.w} y={325 + i * 17} fill={t.c} fontSize="6.5" fontWeight="600" fontFamily="system-ui">{t.level}</text>
         </g>
       ))}
     </svg>
   );
 }
 
+/* ── Main Section ──────────────────────────────────────── */
 export default function InsightSection() {
-  const { ref: parallaxRef, y: diagramY } = useParallax([0, -40]);
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const glowOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section id="insights" className="py-28 lg:py-40" style={{ backgroundColor: "#f5f5f7" }}>
-      <div className="mx-auto max-w-[980px] px-5">
+    <section ref={ref} id="insights" className="relative overflow-hidden py-28 lg:py-40" style={{ backgroundColor: "#000000" }}>
+      {/* Grid texture */}
+      <svg className="absolute inset-0 h-full w-full opacity-[0.03]">
+        <defs>
+          <pattern id="insGrid" width="48" height="48" patternUnits="userSpaceOnUse">
+            <path d="M 48 0 L 0 0 0 48" fill="none" stroke="white" strokeWidth="0.5" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#insGrid)" />
+      </svg>
 
-        {/* Label */}
-        <motion.div variants={chipSlideIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-5 text-center">
-          <span className="text-[12px] font-medium uppercase tracking-widest" style={{ color: "#6e6e73" }}>
+      {/* Glow orbs */}
+      <motion.div className="pointer-events-none absolute inset-0" style={{ opacity: glowOpacity }}>
+        <div
+          className="absolute left-1/4 top-1/3 -translate-x-1/2 -translate-y-1/2"
+          style={{ width: 500, height: 500, background: "radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 65%)", filter: "blur(60px)" }}
+        />
+        <div
+          className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2"
+          style={{ width: 400, height: 400, background: "radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 65%)", filter: "blur(50px)" }}
+        />
+      </motion.div>
+
+      <div className="relative z-10 mx-auto max-w-[980px] px-5">
+        {/* Chip label */}
+        <motion.div variants={chipSlideIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-6 flex justify-center">
+          <span
+            className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[12px] font-semibold"
+            style={{
+              backgroundColor: "rgba(6,182,212,0.12)",
+              color: "#06b6d4",
+              border: "1px solid rgba(6,182,212,0.3)",
+              letterSpacing: "0.04em",
+              textTransform: "uppercase",
+            }}
+          >
+            <span className="inline-block h-1.5 w-1.5 rounded-full animate-pulse" style={{ backgroundColor: "#06b6d4" }} />
             Platform Intelligence
           </span>
         </motion.div>
 
-        {/* Headline — word-by-word */}
-        <motion.div
-          variants={wordStagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="mb-4 text-center"
-        >
-          <h2 style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)", lineHeight: 1.05, letterSpacing: "-0.03em", color: "#1d1d1f", fontWeight: 700 }}>
-            {"Limitless protection.".split(" ").map((word, i) => (
-              <motion.span key={i} variants={wordRevealItem} className="inline-block mr-[0.3em]">
-                {word}
-              </motion.span>
-            ))}
+        {/* Headline — gradient accent */}
+        <motion.div variants={wordStagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-5 text-center">
+          <h2 style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)", lineHeight: 1.05, letterSpacing: "-0.03em", fontWeight: 700 }}>
+            <motion.span variants={wordRevealItem} className="inline-block mr-[0.3em]" style={{ color: "#ffffff" }}>
+              Limitless
+            </motion.span>
+            <motion.span
+              variants={wordRevealItem}
+              className="inline-block"
+              style={{
+                background: "linear-gradient(90deg, #06b6d4, #8b5cf6)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              protection.
+            </motion.span>
           </h2>
         </motion.div>
 
-        <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-          className="mx-auto mb-20 max-w-xl text-center text-[17px] leading-relaxed" style={{ color: "#6e6e73" }}>
+        {/* Description */}
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mx-auto mb-20 max-w-xl text-center text-[17px] leading-relaxed"
+          style={{ color: "rgba(255,255,255,0.45)" }}
+        >
           {insightArticle.description}
         </motion.p>
 
-        {/* Split layout */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
-          {/* Left — Diagram with parallax */}
-          <div ref={parallaxRef}>
-            <motion.div
-              variants={scaleIn}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              style={{ y: diagramY }}
-            >
-              <div
-                className="overflow-hidden rounded-[20px]"
-                style={{ aspectRatio: "440/360", border: "1px solid rgba(0,0,0,0.06)", boxShadow: "0 8px 32px rgba(0,0,0,0.06)" }}
-              >
-                <DiagramMockup />
+        {/* Two-column layout */}
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
+          {/* Left — Dark Diagram */}
+          <motion.div variants={scaleIn} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <TiltCard tiltIntensity={10} scaleHover={1.02} borderRadius={20} darkMode>
+              <div className="overflow-hidden rounded-[20px]" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
+                <DarkDiagramMockup />
               </div>
-            </motion.div>
-          </div>
+            </TiltCard>
+          </motion.div>
 
-          {/* Right — Article + features (staggered reveal) */}
+          {/* Right — Intelligence Panel */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="flex flex-col justify-center"
           >
-            {/* Category tabs */}
-            <motion.div variants={staggerItem} className="mb-6 flex gap-3">
-              {insightArticle.categories.map((cat, i) => (
-                <span key={cat} className="rounded-full px-4 py-1.5 text-[12px] font-medium"
-                  style={{
-                    backgroundColor: i === 0 ? "#1d1d1f" : "transparent",
-                    color: i === 0 ? "#ffffff" : "#6e6e73",
-                    border: i === 0 ? "none" : "1px solid rgba(0,0,0,0.1)",
-                  }}>
-                  {cat}
-                </span>
-              ))}
-            </motion.div>
+            <TiltCard tiltIntensity={10} scaleHover={1.02} borderRadius={20} darkMode>
+              <div
+                className="flex h-full flex-col rounded-[20px] p-6 lg:p-8"
+                style={{ backgroundColor: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)" }}
+              >
+                {/* Interactive tabs */}
+                <motion.div variants={staggerItem} className="mb-6 flex gap-2">
+                  {insightArticle.categories.map((cat, i) => (
+                    <button
+                      key={cat}
+                      onClick={() => setActiveTab(i)}
+                      className="rounded-full px-4 py-1.5 text-[12px] font-medium transition-all duration-300 cursor-pointer"
+                      style={{
+                        backgroundColor: activeTab === i ? "rgba(6,182,212,0.15)" : "transparent",
+                        color: activeTab === i ? "#06b6d4" : "rgba(255,255,255,0.35)",
+                        border: activeTab === i ? "1px solid rgba(6,182,212,0.3)" : "1px solid rgba(255,255,255,0.08)",
+                        boxShadow: activeTab === i ? "0 0 20px rgba(6,182,212,0.1)" : "none",
+                      }}
+                    >
+                      {cat}
+                    </button>
+                  ))}
+                </motion.div>
 
-            <motion.h3 variants={staggerItem} className="mb-4 text-[20px] font-bold leading-snug" style={{ color: "#1d1d1f", letterSpacing: "-0.02em" }}>
-              {insightArticle.title}
-            </motion.h3>
+                {/* Article title */}
+                <motion.h3
+                  variants={staggerItem}
+                  className="mb-6 text-[20px] font-bold leading-snug"
+                  style={{ color: "#ffffff", letterSpacing: "-0.02em" }}
+                >
+                  {insightArticle.title}
+                </motion.h3>
 
-            {/* Feature grid — each card staggers in */}
-            {productFeatures.slice(0, 4).map((feat) => (
-              <motion.div key={feat.label} variants={staggerItem} className="mb-3">
-                <TiltCard tiltIntensity={12} scaleHover={1.03} borderRadius={16} darkMode={false}>
-                  <div className="p-4"
-                    style={{ backgroundColor: "#ffffff", border: "1px solid rgba(0,0,0,0.06)", borderRadius: 16 }}>
-                    <div className="mb-1 text-[13px] font-semibold" style={{ color: "#1d1d1f" }}>{feat.label}</div>
-                    <div className="text-[11px] leading-snug" style={{ color: "#6e6e73" }}>{feat.description}</div>
-                  </div>
-                </TiltCard>
-              </motion.div>
-            ))}
+                {/* Feature items — switch per active tab */}
+                <div className="flex flex-1 flex-col gap-3 relative">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeTab}
+                      initial={{ opacity: 0, y: 12, filter: "blur(4px)" }}
+                      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                      exit={{ opacity: 0, y: -8, filter: "blur(4px)" }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      className="flex flex-col gap-3"
+                    >
+                      {(insightTabFeatures[insightArticle.categories[activeTab]] ?? []).map((feat, i) => (
+                        <div
+                          key={feat.label}
+                          className="group relative overflow-hidden rounded-xl p-4 transition-colors duration-300 hover:bg-[rgba(255,255,255,0.04)]"
+                          style={{
+                            backgroundColor: "rgba(255,255,255,0.02)",
+                            border: "1px solid rgba(255,255,255,0.06)",
+                            borderLeft: `3px solid ${featureAccents[i]}`,
+                          }}
+                        >
+                          {/* Hover glow bleed */}
+                          <div
+                            className="pointer-events-none absolute -left-10 top-0 h-full w-20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                            style={{ background: `linear-gradient(90deg, ${featureAccents[i]}15, transparent)` }}
+                          />
+                          <div className="relative flex items-start gap-3">
+                            <div
+                              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg"
+                              style={{ backgroundColor: `${featureAccents[i]}15` }}
+                            >
+                              <svg
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                strokeWidth="2.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                style={{ stroke: featureAccents[i] }}
+                              >
+                                <polyline points="20,6 9,17 4,12" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="text-[13px] font-semibold" style={{ color: "rgba(255,255,255,0.85)" }}>
+                                {feat.label}
+                              </div>
+                              <div className="mt-0.5 text-[11px] leading-snug" style={{ color: "rgba(255,255,255,0.35)" }}>
+                                {feat.description}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
 
-            <motion.div variants={staggerItem} className="flex items-center justify-between pt-5" style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}>
-              <span className="text-[12px]" style={{ color: "#a1a1a6" }}>{insightArticle.date}</span>
-              <a href="#" className="inline-flex items-center gap-1.5 text-[13px] font-medium" style={{ color: "#06b6d4" }}>
-                View Full Docs
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <polyline points="9,18 15,12 9,6" />
-                </svg>
-              </a>
-            </motion.div>
+                {/* Bottom bar */}
+                <motion.div
+                  variants={staggerItem}
+                  className="mt-6 flex items-center justify-between pt-5"
+                  style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
+                >
+                  <span className="text-[12px]" style={{ color: "rgba(255,255,255,0.2)" }}>
+                    {insightArticle.date}
+                  </span>
+                  <a
+                    href="/docs"
+                    className="inline-flex items-center gap-1.5 text-[13px] font-medium transition-opacity hover:opacity-80"
+                    style={{ color: "#06b6d4" }}
+                  >
+                    View Full Docs
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <polyline points="9,18 15,12 9,6" />
+                    </svg>
+                  </a>
+                </motion.div>
+              </div>
+            </TiltCard>
           </motion.div>
         </div>
       </div>

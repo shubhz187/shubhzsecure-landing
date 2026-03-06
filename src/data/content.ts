@@ -59,6 +59,27 @@ export const productFeatures = [
   },
 ];
 
+export const insightTabFeatures: Record<string, { label: string; description: string }[]> = {
+  Dashboard: [
+    { label: "Architecture Diagrams", description: "Auto-generate DFD and architecture diagrams with Mermaid" },
+    { label: "Multi-Provider AI", description: "Groq, DeepSeek, Claude, and Gemini working in concert" },
+    { label: "Privacy Scoring", description: "NIST PRAM + FAIR-Privacy quantitative risk assessment" },
+    { label: "Cloud Connectors", description: "22+ connectors for AWS, Azure, GCP, and on-premise systems" },
+  ],
+  Scanner: [
+    { label: "PII Detection", description: "ML-powered classification of personally identifiable information across all data stores" },
+    { label: "SPI Recognition", description: "Detect sensitive personal information including health, financial, and biometric data" },
+    { label: "22+ Connectors", description: "Scan PostgreSQL, MySQL, S3, Azure Blob, GCS, and on-premise file systems" },
+    { label: "Real-Time Alerts", description: "Instant notifications when new sensitive data is detected in monitored sources" },
+  ],
+  Compliance: [
+    { label: "GDPR Automation", description: "Automated data mapping, DPIA generation, and Article 30 record maintenance" },
+    { label: "CCPA & HIPAA", description: "Pre-built compliance templates with automated evidence collection and gap analysis" },
+    { label: "Audit Reports", description: "One-click generation of audit-ready compliance reports with full evidence trails" },
+    { label: "DSR Management", description: "Automated Data Subject Request workflows for access, deletion, and portability" },
+  ],
+};
+
 export const testimonials = [
   {
     quote:
