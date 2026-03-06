@@ -25,7 +25,7 @@ function WindowChrome({ title }: { title: string }) {
       <circle cx="18" cy="16" r="4" fill="#ff5f57" opacity="0.8" />
       <circle cx="34" cy="16" r="4" fill="#febc2e" opacity="0.8" />
       <circle cx="50" cy="16" r="4" fill="#28c840" opacity="0.8" />
-      <text x="220" y="19" fill="rgba(255,255,255,0.3)" fontSize="7.5" textAnchor="middle" fontFamily="system-ui" fontWeight="500">
+      <text x="220" y="20" fill="rgba(255,255,255,0.3)" fontSize="9" textAnchor="middle" fontFamily="system-ui" fontWeight="500">
         {title}
       </text>
     </>
@@ -51,38 +51,38 @@ function DashboardMockup() {
 
       {/* USERS */}
       <rect x="16" y="68" width="95" height="48" rx="10" fill="rgba(6,182,212,0.06)" stroke="#06b6d4" strokeWidth="1" />
-      <text x="63" y="88" fill="#06b6d4" fontSize="7.5" textAnchor="middle" fontWeight="600" fontFamily="system-ui">USERS</text>
-      <text x="63" y="102" fill="rgba(255,255,255,0.35)" fontSize="6" textAnchor="middle" fontFamily="system-ui">External Entity</text>
+      <text x="63" y="86" fill="#06b6d4" fontSize="9.5" textAnchor="middle" fontWeight="600" fontFamily="system-ui">USERS</text>
+      <text x="63" y="102" fill="rgba(255,255,255,0.35)" fontSize="7.5" textAnchor="middle" fontFamily="system-ui">External Entity</text>
 
       {/* WEB APP */}
       <rect x="170" y="50" width="105" height="54" rx="10" fill="rgba(139,92,246,0.06)" stroke="#8b5cf6" strokeWidth="1" />
-      <text x="222" y="74" fill="#8b5cf6" fontSize="8" textAnchor="middle" fontWeight="600" fontFamily="system-ui">WEB APP</text>
-      <text x="222" y="88" fill="rgba(255,255,255,0.35)" fontSize="6" textAnchor="middle" fontFamily="system-ui">React Frontend</text>
+      <text x="222" y="72" fill="#8b5cf6" fontSize="10" textAnchor="middle" fontWeight="600" fontFamily="system-ui">WEB APP</text>
+      <text x="222" y="88" fill="rgba(255,255,255,0.35)" fontSize="7.5" textAnchor="middle" fontFamily="system-ui">React Frontend</text>
 
       {/* API GATEWAY */}
       <rect x="170" y="130" width="105" height="54" rx="10" fill="rgba(245,158,11,0.06)" stroke="#f59e0b" strokeWidth="1" />
-      <text x="222" y="154" fill="#f59e0b" fontSize="8" textAnchor="middle" fontWeight="600" fontFamily="system-ui">API GATEWAY</text>
-      <text x="222" y="168" fill="rgba(255,255,255,0.35)" fontSize="6" textAnchor="middle" fontFamily="system-ui">FastAPI + Auth</text>
+      <text x="222" y="152" fill="#f59e0b" fontSize="10" textAnchor="middle" fontWeight="600" fontFamily="system-ui">API GATEWAY</text>
+      <text x="222" y="168" fill="rgba(255,255,255,0.35)" fontSize="7.5" textAnchor="middle" fontFamily="system-ui">FastAPI + Auth</text>
 
       {/* DATABASE */}
       <rect x="50" y="215" width="95" height="48" rx="10" fill="rgba(16,185,129,0.06)" stroke="#10b981" strokeWidth="1" />
-      <text x="97" y="235" fill="#10b981" fontSize="7.5" textAnchor="middle" fontWeight="600" fontFamily="system-ui">DATABASE</text>
-      <text x="97" y="249" fill="rgba(255,255,255,0.35)" fontSize="6" textAnchor="middle" fontFamily="system-ui">Supabase</text>
+      <text x="97" y="233" fill="#10b981" fontSize="9.5" textAnchor="middle" fontWeight="600" fontFamily="system-ui">DATABASE</text>
+      <text x="97" y="249" fill="rgba(255,255,255,0.35)" fontSize="7.5" textAnchor="middle" fontFamily="system-ui">Supabase</text>
 
       {/* AI ENGINE */}
       <rect x="180" y="215" width="105" height="48" rx="10" fill="rgba(239,68,68,0.06)" stroke="#ef4444" strokeWidth="1" />
-      <text x="232" y="235" fill="#ef4444" fontSize="7.5" textAnchor="middle" fontWeight="600" fontFamily="system-ui">AI ENGINE</text>
-      <text x="232" y="249" fill="rgba(255,255,255,0.35)" fontSize="6" textAnchor="middle" fontFamily="system-ui">Multi-Provider</text>
+      <text x="232" y="233" fill="#ef4444" fontSize="9.5" textAnchor="middle" fontWeight="600" fontFamily="system-ui">AI ENGINE</text>
+      <text x="232" y="249" fill="rgba(255,255,255,0.35)" fontSize="7.5" textAnchor="middle" fontFamily="system-ui">Multi-Provider</text>
 
       {/* PII SCANNER */}
       <rect x="320" y="130" width="105" height="54" rx="10" fill="rgba(6,182,212,0.06)" stroke="#06b6d4" strokeWidth="1" />
-      <text x="372" y="154" fill="#06b6d4" fontSize="8" textAnchor="middle" fontWeight="600" fontFamily="system-ui">PII SCANNER</text>
-      <text x="372" y="168" fill="rgba(255,255,255,0.35)" fontSize="6" textAnchor="middle" fontFamily="system-ui">ML Classifier</text>
+      <text x="372" y="152" fill="#06b6d4" fontSize="10" textAnchor="middle" fontWeight="600" fontFamily="system-ui">PII SCANNER</text>
+      <text x="372" y="168" fill="rgba(255,255,255,0.35)" fontSize="7.5" textAnchor="middle" fontFamily="system-ui">ML Classifier</text>
 
       {/* CLOUD */}
       <rect x="320" y="215" width="105" height="48" rx="10" fill="rgba(139,92,246,0.06)" stroke="#8b5cf6" strokeWidth="1" />
-      <text x="372" y="235" fill="#8b5cf6" fontSize="7.5" textAnchor="middle" fontWeight="600" fontFamily="system-ui">CLOUD</text>
-      <text x="372" y="249" fill="rgba(255,255,255,0.35)" fontSize="6" textAnchor="middle" fontFamily="system-ui">S3 / Azure / GCS</text>
+      <text x="372" y="233" fill="#8b5cf6" fontSize="9.5" textAnchor="middle" fontWeight="600" fontFamily="system-ui">CLOUD</text>
+      <text x="372" y="249" fill="rgba(255,255,255,0.35)" fontSize="7.5" textAnchor="middle" fontFamily="system-ui">S3 / Azure / GCS</text>
 
       {/* Connections */}
       <line x1="111" y1="92" x2="170" y2="77" stroke="rgba(255,255,255,0.12)" strokeWidth="1" strokeDasharray="4,3" markerEnd="url(#arrD)" />
@@ -94,17 +94,17 @@ function DashboardMockup() {
 
       {/* Threat panel */}
       <rect x="16" y="285" width="408" height="82" rx="10" fill="rgba(239,68,68,0.04)" stroke="rgba(239,68,68,0.12)" strokeWidth="1" />
-      <text x="30" y="306" fill="#ef4444" fontSize="7.5" fontWeight="700" fontFamily="system-ui" letterSpacing="0.05em">⚠ LINDDUN THREATS DETECTED</text>
+      <text x="30" y="306" fill="#ef4444" fontSize="9" fontWeight="700" fontFamily="system-ui" letterSpacing="0.05em">⚠ LINDDUN THREATS DETECTED</text>
       {[
         { label: "Linkability", level: "High", c: "#ef4444", w: 150, fill: 105 },
         { label: "Identifiability", level: "Medium", c: "#f59e0b", w: 110, fill: 77 },
         { label: "Non-repudiation", level: "Low", c: "#10b981", w: 65, fill: 45 },
       ].map((t, i) => (
         <g key={i}>
-          <text x="30" y={324 + i * 17} fill="rgba(255,255,255,0.4)" fontSize="7" fontFamily="system-ui">{t.label}</text>
-          <rect x="135" y={317 + i * 17} width={t.w} height="7" rx="3.5" fill="rgba(255,255,255,0.05)" />
-          <rect x="135" y={317 + i * 17} width={t.fill} height="7" rx="3.5" fill={t.c} opacity="0.6" />
-          <text x={142 + t.w} y={325 + i * 17} fill={t.c} fontSize="6.5" fontWeight="600" fontFamily="system-ui">{t.level}</text>
+          <text x="30" y={325 + i * 18} fill="rgba(255,255,255,0.4)" fontSize="8.5" fontFamily="system-ui">{t.label}</text>
+          <rect x="150" y={318 + i * 18} width={t.w} height="8" rx="4" fill="rgba(255,255,255,0.05)" />
+          <rect x="150" y={318 + i * 18} width={t.fill} height="8" rx="4" fill={t.c} opacity="0.6" />
+          <text x={157 + t.w} y={326 + i * 18} fill={t.c} fontSize="8" fontWeight="600" fontFamily="system-ui">{t.level}</text>
         </g>
       ))}
     </svg>
