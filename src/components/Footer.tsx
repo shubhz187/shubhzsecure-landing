@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { staggerContainer, staggerItem } from "@/lib/motion";
 import { footerLinks } from "@/data/content";
 
@@ -19,7 +20,7 @@ export default function Footer() {
           {/* Brand */}
           <motion.div variants={staggerItem} className="col-span-2 md:col-span-1 lg:col-span-2">
             <div className="mb-5 flex items-center gap-2">
-              <img src="/logo.png" alt="ShubhzSecure" width="22" height="22" />
+              <Image src="/logo.png" alt="ShubhzSecure" width={22} height={22} />
               <span className="text-[16px] font-semibold text-white" style={{ letterSpacing: "-0.02em" }}>
                 ShubhzSecure
               </span>
