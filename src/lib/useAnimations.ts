@@ -10,7 +10,7 @@ export function useAnimatedCounter(
     decimals: number = 0
 ) {
     const ref = useRef<HTMLSpanElement>(null);
-    const inView = useInView(ref, { once: true, margin: "-80px" });
+    const inView = useInView(ref, { once: true, margin: "0px" });
     const motionVal = useMotionValue(0);
     const springVal = useSpring(motionVal, {
         duration: duration * 1000,
