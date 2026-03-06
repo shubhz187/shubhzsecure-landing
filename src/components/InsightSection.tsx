@@ -471,22 +471,12 @@ export default function InsightSection() {
                 {/* Bottom bar */}
                 <motion.div
                   variants={staggerItem}
-                  className="mt-6 flex items-center justify-between pt-5"
+                  className="mt-6 pt-5"
                   style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
                 >
                   <span className="text-[12px]" style={{ color: "rgba(255,255,255,0.2)" }}>
                     {insightArticle.date}
                   </span>
-                  <a
-                    href="/docs"
-                    className="inline-flex items-center gap-1.5 text-[13px] font-medium transition-opacity hover:opacity-80"
-                    style={{ color: "#06b6d4" }}
-                  >
-                    View Full Docs
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <polyline points="9,18 15,12 9,6" />
-                    </svg>
-                  </a>
                 </motion.div>
               </div>
             </TiltCard>
