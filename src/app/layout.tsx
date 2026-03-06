@@ -15,8 +15,8 @@ export const metadata: Metadata = {
   description:
     "AI-powered privacy threat modeling, PII scanning across 22+ connectors, and automated compliance — all in one platform built for modern security teams.",
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: "/shubhzsecure-landing/logo.png",
+    apple: "/shubhzsecure-landing/logo.png",
   },
 };
 

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { navLinks } from "@/data/content";
 import { navReveal } from "@/lib/motion";
@@ -94,7 +93,7 @@ export default function Navbar() {
           {/* Logo */}
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 20 }}>
             <Link href="/" className="flex items-center gap-2 shrink-0">
-              <Image src="/logo.png" alt="ShubhzSecure" width={28} height={28} />
+              <img src="/shubhzsecure-landing/logo.png" alt="ShubhzSecure" width="28" height="28" />
               <span
                 className="text-[17px] font-semibold transition-colors duration-300"
                 style={{ color: logoColor, letterSpacing: "-0.02em" }}
